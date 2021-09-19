@@ -47,7 +47,6 @@ class SinglyLinkedList {
 
         while(current) {
             if (current.next === this.tail) {
-                this.tail = null
                 this.tail = current
                 this.tail.next = null
                 this.length--
@@ -55,5 +54,24 @@ class SinglyLinkedList {
             }
             current = current.next
         }
+    }
+
+    shift() {
+        if (this.length === 0) {
+            return undefined
+        }
+
+        let removedNode = new ListNode()
+        removedNode.setVal(this.head.val)
+
+        if (this.length === 1) {
+            this.head = null
+            this.tail = null
+        } else {
+            this.head = this.head.next
+        }
+
+        this.length--
+        return removedNode
     }
 }
