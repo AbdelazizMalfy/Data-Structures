@@ -102,4 +102,16 @@ class SinglyLinkedList {
 
         return current
     }
+
+    // method to set an element at a specifc index
+    set(index, val) {
+        const current = this.get(index)
+
+        if (current) {
+            current.setVal(val)
+            return true
+        }
+
+        return false
+    }
 }
