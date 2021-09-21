@@ -114,4 +114,42 @@ class SinglyLinkedList {
 
         return false
     }
+
+    // method to insert a node at a specific index
+    insert(index, val) {
+        if (index < 0 || index > this.length) {
+            return false
+        }
+
+        if (index === 0) {
+            return !!this.unshift(val)
+        }
+
+        if (index === this.length) {
+            return !!this.push(val)
+        }
+
+        const newNode = new ListNode(val)
+        const previousNode = this.get(index - 1)
+        newNode.next = previousNode.next
+        previousNode.next = newNode
+        this.length ++
+        return true
+    }
 }
+
+const list = new SinglyLinkedList()
+
+list.push(1)
+list.push(2)
+list.push(3)
+
+console.log('before insert =>', list)
+
+console.log(list.insert(3, 4))
+
+console.log('after insert =>', list)
+console.log('0 index =>', list.get(0))
+console.log('1 index =>', list.get(1))
+console.log('2 index =>', list.get(2))
+console.log('3 index =>', list.get(3))
