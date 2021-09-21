@@ -14,6 +14,7 @@ class SinglyLinkedList {
         this.length = 0
     }
 
+    // method to add to the end of the list
     push(val) {
         let newNode = new ListNode(val)
         if(!this.head) {
@@ -28,13 +29,13 @@ class SinglyLinkedList {
         return this
     }
 
+    // method to remove from the end of the list
     pop() {
         if (this.length === 0) {
             return undefined
         }
 
-        let removedNode = new ListNode()
-        removedNode.setVal(this.tail.val)
+        let removedNode = this.tail
 
         if (this.length === 1) {
             this.head = null
@@ -56,22 +57,34 @@ class SinglyLinkedList {
         }
     }
 
+    // method to remove from the beginning of the list
     shift() {
         if (this.length === 0) {
             return undefined
         }
 
-        let removedNode = new ListNode()
-        removedNode.setVal(this.head.val)
-
         if (this.length === 1) {
-            this.head = null
             this.tail = null
-        } else {
-            this.head = this.head.next
         }
 
+        let removedNode = this.head
+        this.head = this.head.next
         this.length--
         return removedNode
+    }
+
+    // method to add to the beginning of the list
+    unshift(val) {
+        let newNode = new ListNode(val)
+
+        if (this.length === 0) {
+            this.tail = newNode
+        } else {
+            newNode.next = this.head
+        }
+
+        this.head = newNode
+        this.length ++
+        return this
     }
 }
