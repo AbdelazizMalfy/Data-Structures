@@ -87,4 +87,19 @@ class SinglyLinkedList {
         this.length ++
         return this
     }
+
+    // method to get an element at a specific index
+    get(index) {
+        if ( index < 0 || index >= this.length) {
+            return undefined
+        }
+
+        let current = this.head
+
+        for (let i = 0; i < index; i++) {
+            current = current.next
+        }
+
+        return current
+    }
 }
