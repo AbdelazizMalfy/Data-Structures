@@ -84,7 +84,7 @@ class SinglyLinkedList {
         }
 
         this.head = newNode
-        this.length ++
+        this.length++
         return this
     }
 
@@ -133,8 +133,29 @@ class SinglyLinkedList {
         const previousNode = this.get(index - 1)
         newNode.next = previousNode.next
         previousNode.next = newNode
-        this.length ++
+        this.length++
         return true
+    }
+
+    // method to remove a node at a specific index
+    remove(index) {
+        if (index < 0 || index >= this.length) {
+            return undefined
+        }
+
+        if(index === 0) {
+            return this.shift()
+        }
+
+        if(index === this.length - 1 ) {
+            return this.pop()
+        }
+        
+        const previousNode = this.get(index - 1)
+        const removedNode = previousNode.next
+        previousNode.next = previousNode.next.next
+        this.length--
+        return removedNode
     }
 }
 
@@ -143,13 +164,10 @@ const list = new SinglyLinkedList()
 list.push(1)
 list.push(2)
 list.push(3)
+list.push(4)
 
-console.log('before insert =>', list)
+console.log('before remove =>', list)
 
-console.log(list.insert(3, 4))
+console.log('removed node', list.remove(20))
 
-console.log('after insert =>', list)
-console.log('0 index =>', list.get(0))
-console.log('1 index =>', list.get(1))
-console.log('2 index =>', list.get(2))
-console.log('3 index =>', list.get(3))
+console.log('after remove =>', list)
