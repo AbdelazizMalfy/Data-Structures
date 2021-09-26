@@ -33,6 +33,28 @@
         this.length++
         return this
     }
+
+
+    // method to remove from the end of the list
+    pop() {
+        if(this.length === 0) {
+            return undefined
+        }
+
+        let removedNode = this.tail
+
+        if (this.length === 1) {
+            this.head = null
+            this.tail = null
+        } else {
+            this.tail = removedNode.prev
+            this.tail.next = null
+            removedNode.prev = null
+        }
+
+        this.length--
+        return removedNode
+    }
  }
 
 const list = new DoublyLinkedList()
@@ -40,5 +62,6 @@ const list = new DoublyLinkedList()
 list.push(1)
 list.push(2)
 list.push(3)
-
-console.log(list)
+console.log('list before popping', list)
+list.pop()
+console.log('list after popping', list)
