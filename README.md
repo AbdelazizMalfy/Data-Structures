@@ -1,1 +1,4 @@
-## Singly linked list data structure Implementation in Javascript
+Topics:
+
+- Singly Linked Lists
+- Doubly Linked Lists
