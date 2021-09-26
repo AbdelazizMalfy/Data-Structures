@@ -76,7 +76,6 @@
         return removedNode
     }
 
-
     // method to add to the beginning of the list
     unshift(val){
         let newNode = new ListNode(val)
@@ -93,11 +92,36 @@
         this.length++
         return this
     }
+
+    // method to get an element at a specific index
+    get(index) {
+        if (index < 0 || index >= this.length) {
+            return undefined
+        }
+
+        if (this.length === 1) {
+            return this.head
+        }
+
+        if (index === this.length - 1) {
+            return this.tail
+        }
+
+        const middle = (this.length - 1) / 2
+        let current
+
+        if (index <= middle) {
+            current = this.head
+            for (let i = 0; i < index ; i++) {
+                current = current.next
+            }
+        } else {
+            current = this.tail
+            for (let i = this.length - 1; i > index; i--) {
+                current = current.prev
+            }
+        }
+
+        return current
+    }
  }
-
-const list = new DoublyLinkedList()
-
-list.push(1)
-list.push(2)
-list.push(3)
-console.log(list.unshift(0))
