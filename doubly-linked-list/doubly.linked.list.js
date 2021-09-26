@@ -21,7 +21,7 @@
     push(val) {
         let newNode = new ListNode(val)
 
-        if(this.length === 0) {
+        if (this.length === 0) {
             this.head = newNode
             this.tail = newNode
         } else {
@@ -34,10 +34,9 @@
         return this
     }
 
-
     // method to remove from the end of the list
     pop() {
-        if(this.length === 0) {
+        if (this.length === 0) {
             return undefined
         }
 
@@ -55,6 +54,28 @@
         this.length--
         return removedNode
     }
+
+    // method to remove from the beginning of the list
+    shift() {
+        if(this.length === 0) {
+            return undefined
+        }
+
+        let removedNode = this.head
+
+        if (this.length === 1) {
+            this.head = null
+            this.tail = null
+        } else {
+            this.head = removedNode.next
+            this.head.prev = null
+            removedNode.next = null
+        }
+
+        this.length--
+        return removedNode
+
+    }
  }
 
 const list = new DoublyLinkedList()
@@ -62,6 +83,5 @@ const list = new DoublyLinkedList()
 list.push(1)
 list.push(2)
 list.push(3)
-console.log('list before popping', list)
-list.pop()
-console.log('list after popping', list)
+console.log(list.shift())
+console.log(list)
