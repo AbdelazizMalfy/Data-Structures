@@ -154,6 +154,7 @@
         const newNode = new ListNode(val)
         const prev = this.get(index - 1)
         const next = prev.next
+
         newNode.prev = prev
         newNode.next = next
         next.prev = newNode
@@ -161,14 +162,44 @@
         this.length++
         return true
     }
+
+    // method to remove a node at a specific index
+    remove(index) {
+        if (index < 0 || index >= this.length) {
+            return undefined
+        }
+
+        if (index === 0) {
+            return this.shift()
+        }
+
+        if (index === this.length - 1) {
+            return this.pop()
+        }
+
+        const removedNode = this.get(index)
+        const prev = removedNode.prev
+        const next = removedNode.next
+
+        prev.next = next
+        next.prev = prev
+
+        removedNode.next = null
+        removedNode.prev = null
+
+        this.length--
+        return removedNode
+    }
  }
 
 const list = new DoublyLinkedList()
 
 list.push(1)
+list.push(2)
 list.push(3)
+list.push(4)
 
 
 console.log('before \n' ,list)
-console.log(list.insert(2, '4'))
+console.log(list.remove(4))
 console.log('after \n', list)
