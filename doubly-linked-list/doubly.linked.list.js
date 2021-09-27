@@ -124,4 +124,51 @@
 
         return current
     }
+
+    // method to set an element at a specifc index
+    set(index, val) {
+        const current = this.get(index)
+
+        if (current) {
+            current.setVal(val)
+            return true
+        }
+
+        return false
+    }
+
+    // method to insert a node at a specific index
+    insert(index, val) {
+        if (index < 0 || index > this.length) {
+            return false
+        }
+
+        if (index === 0) {
+            return !!this.unshift(val)
+        }
+
+        if (index === this.length) {
+            return !!this.push(val)
+        }
+
+        const newNode = new ListNode(val)
+        const prev = this.get(index - 1)
+        const next = prev.next
+        newNode.prev = prev
+        newNode.next = next
+        next.prev = newNode
+        prev.next = newNode
+        this.length++
+        return true
+    }
  }
+
+const list = new DoublyLinkedList()
+
+list.push(1)
+list.push(3)
+
+
+console.log('before \n' ,list)
+console.log(list.insert(2, '4'))
+console.log('after \n', list)
