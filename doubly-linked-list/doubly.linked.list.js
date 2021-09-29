@@ -190,16 +190,4 @@
         this.length--
         return removedNode
     }
- }
-
-const list = new DoublyLinkedList()
-
-list.push(1)
-list.push(2)
-list.push(3)
-list.push(4)
-
-
-console.log('before \n' ,list)
-console.log(list.remove(4))
-console.log('after \n', list)
+}

@@ -90,7 +90,7 @@ class SinglyLinkedList {
 
     // method to get an element at a specific index
     get(index) {
-        if ( index < 0 || index >= this.length) {
+        if (index < 0 || index >= this.length) {
             return undefined
         }
 
