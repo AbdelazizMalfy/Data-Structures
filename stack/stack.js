@@ -16,7 +16,7 @@ class Stack {
         this.length = 0
     }
 
-    // method to add to the beginning of the list
+    // method to add to the beginning of the stack
     push(val) {
         const newNode = new Node(val)
 
@@ -24,19 +24,30 @@ class Stack {
             this.first = newNode
             this.last = newNode
         } else {
-            const current = this.first
+            const oldFirst = this.first
             this.first = newNode
-            newNode.next = current
+            newNode.next = oldFirst
         }
 
         this.length++
         return this.length
     }
+
+    // method to remove from the beginning of the stack
+    pop() {
+        if (this.length === 0) {
+            return undefined
+        }
+
+        const removedNode = this.first
+
+        if (this.length === 1) {
+            this.last = null
+        } 
+        this.first = removedNode.next
+        removedNode.next = null
+
+        this.length--
+        return removedNode
+    }
 }
-
-const stack = new Stack()
-
-console.log(stack.push(1))
-console.log(stack.push(2))
-console.log(stack.push(3))
-console.log(stack)
