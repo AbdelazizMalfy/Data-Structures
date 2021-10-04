@@ -21,14 +21,12 @@ class Stack {
         const newNode = new Node(val)
 
         if (this.length === 0) {
-            this.first = newNode
             this.last = newNode
         } else {
-            const oldFirst = this.first
-            this.first = newNode
-            newNode.next = oldFirst
+            newNode.next = this.first
         }
 
+        this.first = newNode
         this.length++
         return this.length
     }

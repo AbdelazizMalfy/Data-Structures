@@ -52,13 +52,3 @@ class Queue {
         return removedNode
     }
 }
-
-
-const queue = new Queue()
-
-console.log(queue.enqueue(1))
-console.log(queue.enqueue(2))
-console.log(queue.enqueue(3))
-console.log('before dequeuing', queue)
-console.log(queue.dequeue())
-console.log('after dequeuing', queue)
