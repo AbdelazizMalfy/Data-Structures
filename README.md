@@ -4,3 +4,4 @@ Topics:
 - Doubly Linked Lists
 - Stacks
 - Queues
+- Binary Search Tree
