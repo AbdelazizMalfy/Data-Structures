@@ -41,16 +41,51 @@ class BinarySearchTree {
                     currentNode.right = newNode
                     return this
                 }
-            } 
+            }
         }
     }
+
+    // method to return a specific node by value
+    find(val) {
+        if(!this.root) {
+            return undefined
+        }
+
+        let currentNode = this.root
+        let found = false
+
+        while(!found && currentNode) {
+            if(val < currentNode.val) {
+                currentNode = currentNode.left
+            } else if(val > currentNode.val) {
+                currentNode = currentNode.right
+            } else {
+                found = true
+            }
+        }
+
+        return currentNode
+    }
+
+    // method to return if the tree contains a value or not
+    contains(val) {
+        if(!this.root) {
+            return false
+        }
+
+        let currentNode = this.root
+        let found = false
+
+        while(!found && currentNode) {
+            if(val < currentNode.val) {
+                currentNode = currentNode.left
+            } else if(val > currentNode.val) {
+                currentNode = currentNode.right
+            } else {
+                found = true
+            }
+        }
+
+        return found
+    }
 }
-
-const tree = new BinarySearchTree();
-
-tree.root = new Node(10)
-tree.root.right = new Node(15)
-tree.root.left = new Node(7)
-tree.root.left.right = new Node(9)
-
-console.log(tree)
