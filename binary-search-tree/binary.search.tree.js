@@ -88,4 +88,36 @@ class BinarySearchTree {
 
         return found
     }
+
+    breadthFirstSearch() {
+        let data = []
+        let queue = [] // <= temp data holder with first in first out
+        let node = this.root
+
+        queue.push(node)
+
+        while(queue.length) {
+            node = queue.shift()
+            data.push(node)
+            if(node.left) {
+                queue.push(node.left)
+            }
+
+            if(node.right){
+                queue.push(node.right)
+            }
+        }
+        return data
+    }
 }
+
+QUEUE:[10]
+DATA: [10]
+
+const tree = new BinarySearchTree()
+tree.insert(10)
+tree.insert(6)
+tree.insert(15)
+tree.insert(3)
+tree.insert(8)
+tree.insert(20)
