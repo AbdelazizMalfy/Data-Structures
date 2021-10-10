@@ -89,6 +89,7 @@ class BinarySearchTree {
         return found
     }
 
+    // method to traverse the tree in horizontal way
     breadthFirstSearch() {
         const data = []
         const queue = [] // <= temp data holder with first in first out
@@ -110,6 +111,7 @@ class BinarySearchTree {
         return data
     }
 
+    // method to traverse the tree in vertical way (preorder)
     preOrderDepthFirstSearch() {
         const data = []
         let currentNode = this.root
@@ -131,6 +133,8 @@ class BinarySearchTree {
         return data
     }
 
+
+    // method to traverse the tree in vertical way (postorder)
     postOrderDepthFirstSearch(){
         const data = []
         let currentNode = this.root
@@ -151,18 +155,26 @@ class BinarySearchTree {
 
         return data
     }
+
+    // method to traverse the tree in vertical way (inorder)
+    inOrderDepthFirstSearch(){
+        const data = []
+        let currentNode = this.root
+
+        const traverse = (currentNode) => {
+            if(currentNode.left) {
+                traverse(currentNode.left)
+            }
+
+            data.push(currentNode.val)
+
+            if(currentNode.right) {
+                traverse(currentNode.right)
+            }
+        }
+
+        traverse(currentNode)
+
+        return data
+    }
 }
-
-QUEUE:[10]
-DATA: [10]
-
-const tree = new BinarySearchTree()
-tree.insert(10)
-tree.insert(6)
-tree.insert(15)
-tree.insert(3)
-tree.insert(8)
-tree.insert(20)
-
-console.log(tree.preOrderDepthFirstSearch())
-console.log(tree.postOrderDepthFirstSearch())
