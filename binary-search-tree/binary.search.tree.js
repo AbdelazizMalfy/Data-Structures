@@ -130,6 +130,27 @@ class BinarySearchTree {
 
         return data
     }
+
+    postOrderDepthFirstSearch(){
+        const data = []
+        let currentNode = this.root
+
+        const traverse = (currentNode) => {
+            if(currentNode.left) {
+                traverse(currentNode.left)
+            }
+
+            if(currentNode.right) {
+                traverse(currentNode.right)
+            }
+
+            data.push(currentNode.val)
+        }
+
+        traverse(currentNode)
+
+        return data
+    }
 }
 
 QUEUE:[10]
@@ -144,3 +165,4 @@ tree.insert(8)
 tree.insert(20)
 
 console.log(tree.preOrderDepthFirstSearch())
+console.log(tree.postOrderDepthFirstSearch())
