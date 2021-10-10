@@ -90,23 +90,44 @@ class BinarySearchTree {
     }
 
     breadthFirstSearch() {
-        let data = []
-        let queue = [] // <= temp data holder with first in first out
-        let node = this.root
+        const data = []
+        const queue = [] // <= temp data holder with first in first out
+        let currentNode = this.root
 
-        queue.push(node)
+        queue.push(currentNode)
 
         while(queue.length) {
-            node = queue.shift()
-            data.push(node)
-            if(node.left) {
-                queue.push(node.left)
+            currentNode = queue.shift()
+            data.push(currentNode)
+            if(currentNode.left) {
+                queue.push(currentNode.left)
             }
 
-            if(node.right){
-                queue.push(node.right)
+            if(currentNode.right){
+                queue.push(currentNode.right)
             }
         }
+        return data
+    }
+
+    preOrderDepthFirstSearch() {
+        const data = []
+        let currentNode = this.root
+
+        const traverse = (currentNode) => {
+            data.push(currentNode.val)
+
+            if(currentNode.left) {
+                traverse(currentNode.left)
+            }
+
+            if(currentNode.right) {
+                traverse(currentNode.right)
+            }
+        }
+
+        traverse(currentNode)
+
         return data
     }
 }
@@ -121,3 +142,5 @@ tree.insert(15)
 tree.insert(3)
 tree.insert(8)
 tree.insert(20)
+
+console.log(tree.preOrderDepthFirstSearch())
