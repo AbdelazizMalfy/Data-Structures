@@ -28,19 +28,17 @@ class BinarySearchTree {
             }
 
             if(val < currentNode.val) {
-                if(currentNode.left) {
-                    currentNode = currentNode.left
-                } else {
+                if(!currentNode.left) {
                     currentNode.left = newNode
                     return this
-                }
-            } else if(val > currentNode.val) {
-                if(currentNode.right) {
-                    currentNode = currentNode.right
-                } else {
+                } 
+                currentNode = currentNode.left
+            } else {
+                if(!currentNode.right){
                     currentNode.right = newNode
                     return this
-                }
+                }  
+                currentNode = currentNode.right
             }
         }
     }
@@ -52,19 +50,18 @@ class BinarySearchTree {
         }
 
         let currentNode = this.root
-        let found = false
 
-        while(!found && currentNode) {
+        while(currentNode) {
+            if(val === currentNode.val) {
+                return currentNode
+            }
+
             if(val < currentNode.val) {
                 currentNode = currentNode.left
-            } else if(val > currentNode.val) {
-                currentNode = currentNode.right
             } else {
-                found = true
+                currentNode = currentNode.right
             }
         }
-
-        return currentNode
     }
 
     // method to return if the tree contains a value or not
@@ -77,12 +74,14 @@ class BinarySearchTree {
         let found = false
 
         while(!found && currentNode) {
+            if(val === currentNode.val) {
+                found = true
+            }
+
             if(val < currentNode.val) {
                 currentNode = currentNode.left
-            } else if(val > currentNode.val) {
-                currentNode = currentNode.right
             } else {
-                found = true
+                currentNode = currentNode.right
             }
         }
 
